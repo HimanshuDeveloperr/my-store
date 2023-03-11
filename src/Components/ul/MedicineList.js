@@ -38,15 +38,19 @@ const MedicineList = () => {
 
   const AddToCartHandler=(medicine)=>{
     console.log(medicine)
-    Cartctx.addToCart({
-      name:medicine.name,
-      description:medicine.description,
-      price:medicine.price
-      ,quantity:medicine.quantity
-    })
+    if (medicine.quantity > 0) {
 
+      Cartctx.addToCart({
+        name:medicine.name,
+        description:medicine.description,
+        price:medicine.price
+        ,quantity:medicine.quantity
+      })
+      context.updateQuantity(medicine.name, medicine.quantity - 1)
+    }
   }
   
+
 
   return (
     

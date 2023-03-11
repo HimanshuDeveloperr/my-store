@@ -47,6 +47,10 @@ function Cart() {
     return acc+1;
   },0)
 
+  
+  const totalAmount= `${Cartctx.totalAmount.toFixed(2)}rs`
+
+  
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -93,6 +97,10 @@ function Cart() {
             marginRight: '10px',
             textAlign: 'center',
           }}>{medicine.quantity}</span>
+
+          <span>
+            <Button variant='danger'>Remove</Button>
+          </span>
         </li>
       )
     })}
@@ -100,11 +108,14 @@ function Cart() {
 </Modal.Body>
 
         <Modal.Footer>
+        <div style={{textAlign:"center"}} className="m-3"><h3>TOTAL AMOUNT</h3>
+          <h4 style={{color:"lightcoral"}}>{totalAmount}</h4>
+          </div>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="success" onClick={handleClose}>
+            Purchase
           </Button>
         </Modal.Footer>
       </Modal>
