@@ -1,5 +1,6 @@
 import React, {  useContext } from 'react';
 import { Button } from 'react-bootstrap';
+import CartContext from '../../Context/CartContext';
 import NewMedContext from '../../Context/NewMedContext';
 import './MedicineList.css';
 
@@ -33,6 +34,18 @@ import './MedicineList.css';
 const MedicineList = () => {
 
   const context = useContext(NewMedContext)
+  const Cartctx=useContext(CartContext)
+
+  const AddToCartHandler=(medicine)=>{
+    console.log(medicine)
+    Cartctx.addToCart({
+      name:medicine.name,
+      description:medicine.description,
+      price:medicine.price
+      ,quantity:medicine.quantity
+    })
+
+  }
   
 
   return (
@@ -46,7 +59,7 @@ const MedicineList = () => {
           <span className="medicine-description">{medicine.description}</span>
           <span className="medicine-price">{medicine.price}</span>
           <span className="medicine-quantity">{medicine.quantity}</span>
-          <span className="medicine-add-to-cart"><Button variant='warning'>Add to Cart</Button></span>
+          <span className="medicine-add-to-cart"><Button variant='warning' onClick={()=>AddToCartHandler(medicine)}>Add to Cart</Button></span>
         </li>
 
             )

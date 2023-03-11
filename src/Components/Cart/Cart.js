@@ -1,13 +1,115 @@
-import { Button } from 'react-bootstrap'
-import React, { Fragment } from 'react'
 
-const Cart = () => {
+
+
+import React, { useContext, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import CartContext from '../../Context/CartContext';
+
+
+
+// const medicines = [
+//     {
+//       id: 1,
+//       name: 'Paracetamol',
+//       description: 'Fever and pain relief',
+//       price: 2.99,
+//       quantity: 10,
+//     },
+//     {
+//       id: 2,
+//       name: 'Ibuprofen',
+//       description: 'Anti-inflammatory and pain relief',
+//       price: 4.99,
+//       quantity: 8,
+//     },
+//     {
+//       id: 3,
+//       name: 'Amoxicillin',
+//       description: 'Antibiotic for bacterial infections',
+//       price: 9.99,
+//       quantity: 5,
+//     },
+//   ];
+  
+function Cart() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+
+  const Cartctx=useContext(CartContext)
+
+
+  const totalNumber=Cartctx.medicine.reduce((acc,cur)=>{
+    return acc+1;
+  },0)
+
   return (
-    <Fragment>
-        <Button variant='warning'>Cart
-        <span style={{padding:'3px'}}>0</span></Button>
-    </Fragment>
-  )
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Cart <span>{totalNumber}</span>
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+  <ul style={{ 
+    listStyle: 'none', 
+    padding: 0, 
+    margin: 0,
+    borderTop: '1px solid #ccc',
+    borderBottom: '1px solid #ccc',
+  }}>
+    {Cartctx.medicine.map((medicine) => {
+      return (
+        <li key={Math.random()} style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '10px 0',
+          borderBottom: '1px solid #ccc',
+        }}>
+          <span style={{ 
+            flex: 1, 
+            marginRight: '10px',
+            fontWeight: 'bold',
+          }}>{medicine.name}</span>
+          <span style={{ 
+            flex: 2, 
+            marginRight: '10px',
+          }}>{medicine.description}</span>
+          <span style={{ 
+            flex: 1, 
+            marginRight: '10px',
+            textAlign: 'right',
+          }}>${medicine.price}</span>
+          <span style={{ 
+            flex: 1, 
+            marginRight: '10px',
+            textAlign: 'center',
+          }}>{medicine.quantity}</span>
+        </li>
+      )
+    })}
+  </ul>
+</Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
-export default Cart
+export default Cart;
