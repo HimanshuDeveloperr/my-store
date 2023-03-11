@@ -4,8 +4,8 @@ import React, { Fragment } from 'react'
 const Cart = () => {
   return (
     <Fragment>
-        <Button className=' btn-outline-dark'>Cart
-        <span>0</span></Button>
+        <Button variant='warning'>Cart
+        <span style={{padding:'3px'}}>0</span></Button>
     </Fragment>
   )
 }

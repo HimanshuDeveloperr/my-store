@@ -1,0 +1,77 @@
+/* .medicine-list {
+    list-style: none;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  
+  .medicine-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #29bd84b4;
+    border-radius: 5px;
+  }
+  
+  .medicine-name {
+    font-weight: bold;
+  }
+  
+  .medicine-description {
+    flex-grow: 1;
+    margin: 0 10px;
+  }
+  
+  .medicine-price,
+  .medicine-quantity {
+    width: 70px;
+    text-align: center;
+  }
+  
+  .medicine-add-to-cart {
+    margin-left: 10px;
+  }
+   */
+
+
+   .medicine-list {
+    list-style: none;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #fffefe;
+    border-radius: 5px;
+  }
+  
+  .medicine-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #29bd84b4;
+    border-radius: 5px;
+  }
+  
+  .medicine-name {
+    font-weight: bold;
+  }
+  
+  .medicine-description {
+    flex-grow: 1;
+    margin: 0 10px;
+  }
+  
+  .medicine-price,
+  .medicine-quantity {
+    width: 70px;
+    text-align: center;
+  }
+  
+  .medicine-add-to-cart {
+    margin-left: 10px;
+  }
+  
